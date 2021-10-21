@@ -6,6 +6,7 @@ module Rack
       LIVERELOAD_JS_PATH = '/__rack/livereload.js'
       HEAD_TAG_REGEX = /<head>|<head[^(er)][^<]*>/
       LIVERELOAD_PORT = 35729
+      LIVERELOAD_SCHEME = "ws"
 
       attr_reader :content_length, :new_body, :livereload_added
 
@@ -20,6 +21,7 @@ module Rack
       def initialize(body, options)
         @body, @options = body, options
         @options[:live_reload_port] ||= LIVERELOAD_PORT
+        @options[:live_reload_scheme] ||= LIVERELOAD_SCHEME
 
         @processed = false
       end
